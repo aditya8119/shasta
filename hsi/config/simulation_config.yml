@@ -21,7 +21,7 @@ simulation:
   n_uav_platoons: 3
   n_ugv_platoons: 3
   map_to_use: 'buffalo-medium'
-  show_nodes: True
+  show_nodes: False
 
 ##---------------------------------------------------------------------##
 experiment:
@@ -33,8 +33,8 @@ experiment:
 ##---------------------------------------------------------------------##
 # UAV and UGV parameters
 uav:
-  speed: 20.0
-  search_speed: 2.0
+  speed: 30.0
+  search_speed: 5.0
   search_dist: 5
   max_formation_size: 10
 ugv:

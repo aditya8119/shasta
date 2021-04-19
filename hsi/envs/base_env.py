@@ -10,7 +10,7 @@ class BaseEnv(object):
             self.p = bc.BulletClient(connection_mode=p.DIRECT)
         else:
             options = '--background_color_red=0.90 --background_color_green=0.90 --background_color_blue=0.90'  # noqa
-            self.p = bc.BulletClient(connection_mode=p.GUI, options=options)
+            self.p = bc.BulletClient(connection_mode=p.GUI)
             self.p.resetDebugVisualizerCamera(cameraDistance=150,
                                               cameraYaw=0,
                                               cameraPitch=-89.999,

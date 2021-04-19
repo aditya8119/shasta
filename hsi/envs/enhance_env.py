@@ -8,6 +8,8 @@ from .blue_team.blue_base import BlueTeam
 from .sensors import Sensors
 from .interaction_manager import InteractionManager
 
+import os
+
 
 class EnhanceEnv(BaseEnv):
     def __init__(self, config):
@@ -16,12 +18,15 @@ class EnhanceEnv(BaseEnv):
         self.config = config
 
         # Load the environment
+        print("Current working directory is", os.getcwd())
+        print("Changing current directory ", os.chdir(".."))
         if self.config['simulation']['detailed_model']:
             path = '/'.join([
                 self.config['urdf_data_path'],
                 self.config['simulation']['map_to_use'],
                 'environment_collision_free.urdf'
             ])
+            print(path)
         else:
             path = '/'.join([
                 self.config['urdf_data_path'],

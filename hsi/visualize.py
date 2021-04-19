@@ -143,9 +143,10 @@ def plot_time_delays(config):
 
 
 def plot_nodes(config):
-    read_path = '/'.join([
-        config['urdf_data_path'], config['simulation']['map_to_use'], 'map.osm'
-    ])
+    #read_path = '/'.join([
+    #    config['urdf_data_path'], config['simulation']['map_to_use'], 'map.osm'
+    #])
+    read_path = '/Users/engineboy/Documents/GitHub/SHaSTA New/enhance/data/assets/buffalo-medium/map.osm'
     G = ox.graph_from_xml(read_path, simplify=True, bidirectional='walk')
     G = nx.convert_node_labels_to_integers(G)
     fig, ax = ox.plot_graph(G, show=False)
