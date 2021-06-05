@@ -1,7 +1,7 @@
-=====
+========
 Usage
-=====
+========
 
-To use shasta in a project::
+To use Offset Game Study in a project::
 
-    import shasta
+	import offset-game

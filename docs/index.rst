@@ -1,18 +1,27 @@
-Welcome to shasta's documentation!
-======================================
+.. complexity documentation master file, created by
+   sphinx-quickstart on Tue Jul  9 22:26:36 2013.
+   You can adapt this file completely to your liking, but it should at least
+   contain the root `toctree` directive.
+
+.. include:: ../README.rst
+
+Contents:
+=========
 
 .. toctree::
    :maxdepth: 2
-   :caption: Contents:
 
-   readme
    installation
    usage
    contributing
+   authors
    history
 
-Indices and tables
-==================
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+Feedback
+========
+
+If you have any suggestions or questions about **Offset Game Study** feel free to email me
+at hemanthm2277@gmail.com.
+
+If you encounter any errors or problems with **Offset Game Study**, please let me know!
+Open an Issue at the GitHub http://github.com/HemuManju/offset-game main repository.
