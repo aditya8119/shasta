@@ -1,0 +1,134 @@
+<!-- <?xml version="1.0" ?>
+<robot name="environment">
+<link name="base_link">
+  <inertial>
+    <origin rpy="0 0 1.75" xyz="0 0 0"/>
+    <mass value="0.2"/>
+    <inertia ixx="1.0" ixy="0" ixz="0" iyy="1.0" iyz="0" izz="1.0"/>
+  </inertial>
+  <visual>
+    <origin rpy="0 0 0" xyz="0 0 0"/>
+    <geometry>
+      <mesh filename="meshes/uav.obj" scale="0.01 0.01 0.01" />
+    </geometry>
+  </visual>
+  <collision>
+      <origin rpy="0 0 0" xyz="0 0 0" />
+      <geometry>
+	 	    <sphere radius="0.5"/>
+      </geometry>
+  </collision>
+</link>
+</robot>
+<?xml version="1.0" ?> -->
+
+<robot name="parrot">
+  <properties arm="0.0397" kf="3.16e-10" km="7.94e-12" thrust2weight="2.25" max_speed_kmh="30" gnd_eff_coeff="11.36859" prop_radius="2.31348e-2" drag_coeff_xy="9.1785e-7" drag_coeff_z="10.311e-7" dw_coeff_1="2267.18" dw_coeff_2=".16" dw_coeff_3="-.11" />
+
+  <link name="base_link">
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="1"/>
+      <inertia ixx="1" ixy="0.0" ixz="0.0" iyy="1" iyz="0.0" izz="1"/>
+    </inertial>
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/uav.obj" scale="0.01 0.01 0.01"/>
+      </geometry>
+    </visual>
+  </link>
+  <link name="prop0_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/rotor.obj" scale="1 1 1"/>
+      </geometry>
+      <material name="grey">
+        <color rgba=".5 .5 .5 1"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="prop0_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="prop0_link"/>
+    <origin rpy="0 0 0" xyz="1.275 0.70 0.55"/>
+    <axis rpy="0 0 0" xyz="0 0 1"/>
+  </joint>
+
+  <link name="prop1_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/rotor.obj" scale="1 1 1"/>
+      </geometry>
+      <material name="grey">
+        <color rgba=".5 .5 .5 1"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="prop1_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="prop1_link"/>
+    <origin rpy="0 0 0" xyz="1.275 -1.85 0.55"/>
+    <axis rpy="0 0 0" xyz="0 0 1"/>
+  </joint>
+
+  <link name="prop2_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/rotor.obj" scale="1 1 1"/>
+      </geometry>
+      <material name="grey">
+        <color rgba=".5 .5 .5 1"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="prop2_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="prop2_link"/>
+    <origin rpy="0 0 0" xyz="-1.275 -1.85 0.55"/>
+    <axis rpy="0 0 0" xyz="0 0 1"/>
+  </joint>
+
+  <link name="prop3_link">
+    <visual>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <geometry>
+        <mesh filename="meshes/rotor.obj" scale="1 1 1"/>
+      </geometry>
+      <material name="grey">
+        <color rgba=".5 .5 .5 1"/>
+      </material>
+    </visual>
+    <inertial>
+      <origin rpy="0 0 0" xyz="0 0 0"/>
+      <mass value="0.1"/>
+      <inertia ixx="0" ixy="0" ixz="0" iyy="0" iyz="0" izz="0"/>
+    </inertial>
+  </link>
+  <joint name="prop3_joint" type="continuous">
+    <parent link="base_link"/>
+    <child link="prop3_link"/>
+    <origin rpy="0 0 0" xyz="-1.275 0.70 0.55"/>
+    <axis rpy="0 0 0" xyz="0 0 1"/>
+  </joint>
+
+</robot>
+
