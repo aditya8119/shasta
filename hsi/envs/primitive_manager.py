@@ -1,5 +1,7 @@
 import numpy as np
 import random
+import json
+from pathlib import Path
 
 from .primitives.planning.planners import PathPlanning
 from .primitives.formation.control import FormationControl
@@ -26,14 +28,21 @@ class PrimitiveManager(object):
         self.planning = PathPlanning(self.state_manager.config)
         self.formation = FormationControl()
         self.shooting = Shooting()
+
+        primitive_config = Path(__file__).parents[2] / 'Primitives/PrimitiveConfig.json'
+        primitive_config_file = open(primitive_config, 'r')
+        config_data = json.load(primitive_config_file)
+
         return None
 
+    #Can Remain here
     def allocate_action(self, action):
         print("Primitive Manager: allocate_action")
         self.action = action
         self.key = action['vehicles_type'] + '_p_' + str(action['platoon_id'])
         return None
 
+    #Needs to remain here
     def execute_primitive(self):
         """Perform primitive execution
         """
@@ -44,12 +53,13 @@ class PrimitiveManager(object):
             'formation': self.formation_primitive,
             'shooting': self.shooting_primitive
         }
+        print("self.action['primitive'] is ", self.action['primitive'])
         if self.action['execute'] and self.action[
                 'primitive'] in primitives.keys():
             done = primitives[self.action['primitive']]()
 
         return done
-
+    #Can Remain here
     def make_vehicles_idle(self):
         """Make the vehicles idle
         """
@@ -57,7 +67,7 @@ class PrimitiveManager(object):
         for vehicle in self.action['vehicles']:
             vehicle.idle = True
         return None
-
+    #Can Remain here
     def make_vehicles_nonidle(self):
         """Make the vehicles non-idle
         """
@@ -66,6 +76,7 @@ class PrimitiveManager(object):
             vehicle.idle = False
         return None
 
+    #Can Remain here
     def get_centroid(self):
         """Get the centroid of the vehicles
         """
@@ -76,6 +87,7 @@ class PrimitiveManager(object):
         centroid = np.mean(np.asarray(centroid), axis=0)
         return centroid
 
+    #Move out
     def planning_primitive(self):
         """Performs path planning primitive
         """
@@ -117,6 +129,7 @@ class PrimitiveManager(object):
             self.make_vehicles_idle()
         return done_rolling
 
+    # Move out
     def formation_primitive(self):
         """Performs formation primitive
         """
@@ -133,6 +146,7 @@ class PrimitiveManager(object):
             vehicle.set_position(vehicle.desired_pos)
         return done_rolling
 
+    #Can remain here
     def plot_path(self):
         print("Primitive Manager: plot_path")
         for point in self.path_points:
@@ -143,6 +157,7 @@ class PrimitiveManager(object):
 
             self.p.createMultiBody(0, baseVisualShapeIndex=a)
 
+    #Move out
     def shooting_primitive(self):
         """Perform shooting primitive
         """

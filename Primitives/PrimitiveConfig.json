@@ -1,0 +1,7 @@
+{
+  "primitives":{
+    "formation": {"controller":"control.py","class":"FormationControl"},
+    "engaging": {"controller":"shooting.py","class":"Shooting"},
+    "planning": {"controller":"planners.py","class":"PathPlanning"}
+    }
+  }
