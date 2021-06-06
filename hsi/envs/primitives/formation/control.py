@@ -6,6 +6,7 @@ class FormationControl(object):
     Coded by: Apurvakumar Jani, Date: 18/9/2019
     """
     def __init__(self):
+        print("Class FormationControl Initialized")
         # Initialise the parameters
         self.a = 10
         self.b = 10
@@ -41,7 +42,7 @@ class FormationControl(object):
         vehicle : class instance
             A vehicle class instance with updated position
         """
-
+        print("FormationControl: calculate_vel")
         # Get the neighboor position
         curr_pos = np.asarray(vehicle.current_pos[0:2])
         peers_pos = all_drones_pos
@@ -87,6 +88,7 @@ class FormationControl(object):
         dt : float
             Time step to be used for distance calculation
         """
+        print("FormationControl: execute")
         vmax = vehicles[0].speed
         all_drones_pos = np.asarray(
             [vehicle.current_pos[0:2] for vehicle in vehicles])

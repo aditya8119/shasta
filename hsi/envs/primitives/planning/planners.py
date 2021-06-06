@@ -11,6 +11,7 @@ class PathPlanning():
     Generates a spline path
     """
     def __init__(self, config):
+        print("Class PathPlanning initialized")
         read_path = '/'.join([
             config['urdf_data_path'], config['simulation']['map_to_use'],
             'map.osm'
@@ -35,6 +36,7 @@ class PathPlanning():
         A : array
             A numpy array such that source = A*target
         """
+        print("PathPlanning: find_homogenous_affine_transformation")
         read_path = '/'.join([
             config['urdf_data_path'], config['simulation']['map_to_use'],
             'coordinates.csv'
@@ -73,6 +75,7 @@ class PathPlanning():
         ValueError
             Number of intermediate points should be greated than zero
         """
+        print("PathPlanning: linear_refine_implicit")
         if n > 1:
             m = 0.5 * (x[:-1] + x[1:])
             if x.ndim == 2:
@@ -102,6 +105,7 @@ class PathPlanning():
         lat_lon : array
             The lat lon co-ordinates
         """
+        print("PathPlanning: convert_to_lat_lon")
         point[2] = 1
         lat_lon = np.dot(point, np.linalg.inv(self.A))
         return lat_lon
@@ -123,6 +127,7 @@ class PathPlanning():
         path_points : array
             A refined path points in pybullet cartesian co-ordinate system
         """
+        print("PathPlanning: find_path")
         x = []
         y = []
 

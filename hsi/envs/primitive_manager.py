@@ -17,18 +17,19 @@ class PrimitiveManager(object):
         physics_client : instance
             An instance of pybullet physics_client
         """
+        print("Primitive Manager Initialized")
         self.p = physics_client
         self.state_manager = state_manager
         self.dt = self.state_manager.config['simulation']['time_step']
 
         # Instance of primitives
         self.planning = PathPlanning(self.state_manager.config)
-        print("state_manager.config is ", self.state_manager.config)
         self.formation = FormationControl()
         self.shooting = Shooting()
         return None
 
     def allocate_action(self, action):
+        print("Primitive Manager: allocate_action")
         self.action = action
         self.key = action['vehicles_type'] + '_p_' + str(action['platoon_id'])
         return None
@@ -36,6 +37,7 @@ class PrimitiveManager(object):
     def execute_primitive(self):
         """Perform primitive execution
         """
+        print("Primitive Manager: execute_primitive")
         done = False
         primitives = {
             'planning': self.planning_primitive,
@@ -51,6 +53,7 @@ class PrimitiveManager(object):
     def make_vehicles_idle(self):
         """Make the vehicles idle
         """
+        print("Primitive Manager: make_vehicles_idle")
         for vehicle in self.action['vehicles']:
             vehicle.idle = True
         return None
@@ -58,6 +61,7 @@ class PrimitiveManager(object):
     def make_vehicles_nonidle(self):
         """Make the vehicles non-idle
         """
+        print("Primitive Manager: make_vehicles_nonidle")
         for vehicle in self.action['vehicles']:
             vehicle.idle = False
         return None
@@ -65,6 +69,7 @@ class PrimitiveManager(object):
     def get_centroid(self):
         """Get the centroid of the vehicles
         """
+        print("Primitive Manager: get_centroid")
         centroid = []
         for vehicle in self.action['vehicles']:
             centroid.append(vehicle.current_pos)
@@ -74,6 +79,7 @@ class PrimitiveManager(object):
     def planning_primitive(self):
         """Performs path planning primitive
         """
+        print("Primitive Manager: planning_primitive")
         # Make vehicles non idle
         done_rolling = False
         # self.make_vehicles_nonidle()
@@ -114,6 +120,7 @@ class PrimitiveManager(object):
     def formation_primitive(self):
         """Performs formation primitive
         """
+        print("Primitive Manager: formation_primitive")
         if self.action['primitive'] == 'formation':
             self.action['centroid_pos'] = self.get_centroid()
             self.action['next_pos'] = self.get_centroid()
@@ -127,6 +134,7 @@ class PrimitiveManager(object):
         return done_rolling
 
     def plot_path(self):
+        print("Primitive Manager: plot_path")
         for point in self.path_points:
             a = self.p.createVisualShape(self.p.GEOM_SPHERE,
                                          radius=1,
@@ -138,7 +146,7 @@ class PrimitiveManager(object):
     def shooting_primitive(self):
         """Perform shooting primitive
         """
-
+        print("Primitive Manager: shooting_primitive")
         # First point of formation
         self.action['centroid_pos'] = self.get_centroid()
         self.action['next_pos'] = self.action['centroid_pos']

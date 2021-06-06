@@ -19,7 +19,7 @@ ugv_primitives:
 ##---------------------------------------------------------------------##
 # Attributes fields
 uav:
-  primitive: 'planning'
+  primitive: 'formation'
   n_vehicles: []
   target_pos: [42.88642, -78.87816, 1]
   vehicles_id: []
@@ -33,7 +33,7 @@ uav:
   casualities: []
 ##---------------------------------------------------------------------##
 ugv:
-  primitive: 'planning'
+  primitive: 'formation'
   n_vehicles: []
   target_pos: [42.88642, -78.87816, 1]
   vehicles_id: []

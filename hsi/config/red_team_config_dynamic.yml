@@ -18,7 +18,7 @@ uav_primitives:
   chasing_node: [42]
 
 ugv_primitives:
-  primitives: ['patrolling', 'patrolling', 'patrolling']
+  primitives: ['formation', 'formation', 'formation']
   patrolling_nodes: [[11, 9], [21, 31], [26, 27]]
   chasing_node: [42]
 ##---------------------------------------------------------------------##
